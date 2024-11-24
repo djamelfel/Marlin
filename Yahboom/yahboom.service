@@ -1,0 +1,10 @@
+[Unit]
+Description=”Process Yahboom service”
+
+[Service]
+Restart=always
+WorkingDirectory=/home/pi/Marlin/Yahboom/
+ExecStart=/usr/bin/python script.py
+
+[Install]
+WantedBy=multi-user target
