@@ -8,4 +8,7 @@ systemctl daemon-reload
 # start our daemon
 systemctl start yahboom.service
 
+# enable the deamon
+sudo systemctl enable yahboom
+
 echo 'install ok!'
