@@ -135,14 +135,16 @@ while True:
             level_temp = 63
             setRGB(MAX_LED, 0xff, 0x00, 0x00)
 
-    if temp >= 65 and fan_state == False:
-        # enable fan
-        bus.write_byte_data(ADDR, FAN_REG, 0x01)
-        fan_state = True
-    elif temp < 65  and fan_state == True:
-        # disable fan
-        bus.write_byte_data(ADDR, FAN_REG, 0x00)
-        fan_state = False
+    if fan_state == False:
+        if temp >= 65: 
+            # enable fan
+            bus.write_byte_data(ADDR, FAN_REG, 0x01)
+            fan_state = True
+    else:
+        if temp < 60:
+            # disable fan
+            bus.write_byte_data(ADDR, FAN_REG, 0x00)
+            fan_state = False
 
 
     # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
